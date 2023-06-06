@@ -2,10 +2,71 @@
   "tags": [
     {
       "name": "user"
+    },
+    {
+      "name": "guest"
+    },
+    {
+      "name": "auth"
     }
 
   ],
   "paths": {
+
+    "/api/v1/guest/generateUsers": {
+      "get": {
+        "tags": [
+          "guest"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "x-oad-type": "response"
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/parameters/Authorization",
+            "x-oad-type": "reference"
+          },
+          {
+            "name": "countUsers",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "x-oad-type": "parameter"
+          },
+          {
+            "name": "countryCode",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "enum": [
+              "pl",
+              "en_US",
+              "uk"
+            ],
+            "x-oad-type": "parameter"
+          },
+          {
+            "name": "seed",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "x-oad-type": "parameter"
+          },
+          {
+            "name": "startUser",
+            "in": "query",
+            "required": true,
+            "type": "string",
+            "x-oad-type": "parameter"
+          }
+
+        ]
+      },
+      "x-oad-type": "operation"
+    },
     "/api/v1/user": {
       "get": {
         "tags": [
@@ -178,7 +239,6 @@
       },
       "x-oad-type": "operation"
     },
-
     "/api/v1/auth": {
       "post": {
         "tags": [
